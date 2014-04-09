@@ -45,17 +45,8 @@
 
         <div class="content">
             <h2>Moderator Panel</h2>
+            <p><a href = "/accounts/logout/">Logout</a></p>
             <h2 class="content-subhead">Search</h2>
-            <p>
-            <form class="pure-form">
-                <fieldset>
-                    <legend>Search by course name, code!</legend>
-
-                    <input type="text" placeholder="Keyword">
-                    <button type="submit" class="pure-button pure-button-primary">Search</button>
-                </fieldset>
-            </form>            
-            </p>
         </div>
 
         <div class = "content">
@@ -75,7 +66,7 @@
                     <td>{{i.category}}</td>
                     <td><a href = "{{i.file_url}}">Download</a></td> 
                     <td><a href = "/moderator_approval/{{i.id}}">Approve</a></td>
-                    <td><a href = "/moderator_reject/{{i.id}}">Approve</a></td>                    
+                    <td><a href = "/moderator_reject/{{i.id}}">Reject</a></td>                    
                 </tr>
                 {%endfor%}
             </table>

@@ -1,4 +1,5 @@
 from django.conf.urls import patterns, include, url
+from django.contrib.auth.views import login, logout
 
 from share.views import upload_page, about, contact, home, file_submit, moderator, landing, moderator_approval, search, explore, moderator_reject
 
@@ -9,7 +10,8 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'share_iitk.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
-
+    url(r'^accounts/login/$', login, {'template_name': 'admin/login.html'}),
+    url(r'^accounts/logout/$', logout),    
     url(r'^admin/', include(admin.site.urls)),
     url(r'^upload/$', upload_page),
     url(r'^about/$', about),

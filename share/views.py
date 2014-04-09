@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.shortcuts import render, render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import RequestContext
+from django.contrib.auth.decorators import login_required
+
 
 import dropbox
 from share.models import FileData
@@ -66,6 +68,7 @@ def search(request):
 
 	return render_to_response('search.html', {'list':file_list}, context_instance = RequestContext(request))
 
+@login_required()
 def moderator(request):
 	file_list = FileData.objects.filter(approved = 'P')
 	return render_to_response('moderator.html', {'list':file_list}, context_instance = RequestContext(request))
