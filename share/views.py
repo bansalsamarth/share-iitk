@@ -34,8 +34,11 @@ def contact(request):
 	return render_to_response('contact.html', {}, context_instance = RequestContext(request))
 
 def home(request):
+	return render_to_response('index.html', {}, context_instance = RequestContext(request))
+
+def explore(request):
 	file_list = FileData.objects.filter(approved = 'Y')
-	return render_to_response('index.html', {'list':file_list}, context_instance = RequestContext(request))
+	return render_to_response('index.html', {'list':file_list}, context_instance = RequestContext(request))	
 
 def search(request):
 	file_list = FileData.objects.filter(approved = 'Y')
@@ -54,14 +57,17 @@ def search(request):
 
 	if 'category' in request.GET:
 		category = request.GET['category']
-		file_list = file_list.filter(category = category)		
+		if category == "All":
+			pass
+		else:
+			file_list = file_list.filter(category = category)		
 	else:
 		category = ""				
 
-	return render_to_response('index.html', {'list':file_list}, context_instance = RequestContext(request))
+	return render_to_response('search.html', {'list':file_list}, context_instance = RequestContext(request))
 
 def moderator(request):
-	file_list = FileData.objects.filter(approved = 'N')
+	file_list = FileData.objects.filter(approved = 'P')
 	return render_to_response('moderator.html', {'list':file_list}, context_instance = RequestContext(request))
 
 def moderator_approval(request, id):
@@ -69,6 +75,12 @@ def moderator_approval(request, id):
 	a.approved = 'Y'
 	a.save()
 	return HttpResponseRedirect('/moderator')
+
+def moderator_reject(request, id):
+	a = FileData.objects.get(id = id)
+	a.approved = 'N'
+	a.save()
+	return HttpResponseRedirect('/moderator')	
 
 def file_submit(request):
 	if request.method == "POST":

@@ -66,6 +66,7 @@
                     <td>Type</td>
                     <td>Download</td>
                     <td>Approve</td>
+                    <td>Reject</td>
                 </tr>
                 {%for i in list%}
                 <tr>
@@ -74,6 +75,7 @@
                     <td>{{i.category}}</td>
                     <td><a href = "{{i.file_url}}">Download</a></td> 
                     <td><a href = "/moderator_approval/{{i.id}}">Approve</a></td>
+                    <td><a href = "/moderator_reject/{{i.id}}">Approve</a></td>                    
                 </tr>
                 {%endfor%}
             </table>

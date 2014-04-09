@@ -8,7 +8,7 @@ class FileData(models.Model):
 	year = models.IntegerField(blank = True, null = True)
 	professor = models.CharField(max_length = 30, blank = True)
 	description = models.TextField()
-	approved = models.CharField(max_length = 1, default = 'N')
+	approved = models.CharField(max_length = 1, default = 'P')
 	file_url = models.CharField(max_length = 100)
 
 	uploader_name = models.CharField(max_length = 40, blank = True)
