@@ -93,8 +93,8 @@ def file_submit(request):
 		course_code = request.POST['course-code']
 		category = request.POST['category']
 		f = request.FILES['file']
-		if len(f) > 5242880:
-			return render_to_response('upload.html', {'error': 'File should be under 5 MB'}, context_instance = RequestContext(request))		
+		#if len(f) > 5242880:
+		#	return render_to_response('upload.html', {'error': 'File should be under 5 MB'}, context_instance = RequestContext(request))		
 		name = '/'+f.name 
 		response = client.put_file(name, f)
 		url = dropbox.client.DropboxClient(token).share(name)
