@@ -39,7 +39,13 @@ def home(request):
 
 def moderator(request):
 	file_list = FileData.objects.filter(approved = 'N')
-	return render_to_response('index.html', {'list':file_list}, context_instance = RequestContext(request))
+	return render_to_response('moderator.html', {'list':file_list}, context_instance = RequestContext(request))
+
+def moderator_approval(request, id):
+	a = FileData.objects.get(id = id)
+	a.approved = 'Y'
+	a.save()
+	return HttpResponseRedirect('/moderator')
 
 def file_submit(request):
 	if request.method == "POST":

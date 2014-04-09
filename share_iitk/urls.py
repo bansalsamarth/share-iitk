@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, include, url
 
-from share.views import upload_page, about, contact, home, file_submit, moderator, landing
+from share.views import upload_page, about, contact, home, file_submit, moderator, landing, moderator_approval
 
 from django.contrib import admin
 admin.autodiscover()
@@ -18,5 +18,5 @@ urlpatterns = patterns('',
     url(r'^$', landing),
     url(r'^home/', home),
     url(r'^moderator/', moderator),
-
+    url(r'^moderator_approval/(?P<id>\d+)', moderator_approval),
 )
