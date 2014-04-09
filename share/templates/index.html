@@ -31,7 +31,6 @@
             <ul>
                 <li class="menu-item-divided pure-menu-selected"><a href="home/">Home</a></li>
                 <li><a href="/upload/">Upload New</a></li>
-                <li><a href="my-upload.html">My Uploads</a></li>
                 <li><a href="/about/">About</a></li>
                 <li><a href="/contact/">Contact</a></li>
             </ul>
@@ -47,25 +46,65 @@
         <div class="content">
             <h2 class="content-subhead">Search</h2>
             <p>
-            <form class="pure-form">
+            <form class="pure-form" action='/search/' method = "GET">
                 <fieldset>
                     <legend>Search by course name, code!</legend>
 
-                    <input type="text" placeholder="Keyword">
-                    <button type="submit" class="pure-button pure-button-primary">Search</button>
+                    <div class="pure-control-group">
+                        <label for="dept">Course Code</label>
+                        <select id="dept" name = 'dep_code' selected = 'PHY' required>
+                            <option>AE</option>
+                            <option>CSE</option>
+                            <option>MTH</option>
+                            <option>CHM</option>
+                            <option selected>PHY</option>
+                            <option>BSE</option>
+                            <option>IME</option>
+                            <option>MBA</option>
+                            <option>CHE</option>
+                            <option>ME</option>
+                            <option>EE</option>
+                            <option>MSE</option>
+                            <option>PSO</option>
+                            <option>MSO</option>
+                            <option>CSO</option>
+                            <option>ESO</option>
+                            <option>SOC</option>
+                            <option>HSS</option>
+                            <option>ECO</option>
+                            <option>PSY</option>
+                            <option>SOC</option>
+                            <option>PHU</option>
+                            <option>ART</option>
+                            <option>SE</option>
+                        </select>                        
+
+                        <input id="course-code" type="text" placeholder="103" name = 'course_code' required>
+                        <select id="category" name = 'category' required>
+                            <option>Assignment</option>
+                            <option>Quiz</option>
+                            <option>Mid Sem Exam</option>
+                            <option>End Sem Exam</option>
+                            <option>E-Book</option>
+                            <option>Other</option>
+                        </select>                        
+                    </div>
                 </fieldset>
+                <button type="submit" class="pure-button pure-button-primary">Search</button>                    
+
             </form>            
             </p>
         </div>
 
         <div class = "content">
+            {%if list%}
             <table class="pure-table table-hover table-bordered">
                 <tr>
                     <td>Course Code</td>
                     <td>Course Name</td>
                     <td>Type</td>
                     <td>Download</td>
-                </tr>
+                </tr>                
                 {%for i in list%}
                 <tr>
                     <td>{{i.course_name}}</td>
@@ -75,6 +114,9 @@
                 </tr>
                 {%endfor%}
             </table>
+            {%else%}
+                No files found!
+            {%endif%}
         </div>
         
     </div>

@@ -37,6 +37,29 @@ def home(request):
 	file_list = FileData.objects.filter(approved = 'Y')
 	return render_to_response('index.html', {'list':file_list}, context_instance = RequestContext(request))
 
+def search(request):
+	file_list = FileData.objects.filter(approved = 'Y')
+
+	if 'dep_code' in request.GET:
+		dep_code = request.GET['dep_code']
+		file_list = file_list.filter(department_code = dep_code)
+	else:
+		dep_code = ""
+
+	if 'course_code' in request.GET:
+		course_code = request.GET['course_code']
+		file_list = file_list.filter(course_code = course_code)		
+	else:
+		course_code = ""
+
+	if 'category' in request.GET:
+		category = request.GET['category']
+		file_list = file_list.filter(category = category)		
+	else:
+		category = ""				
+
+	return render_to_response('index.html', {'list':file_list}, context_instance = RequestContext(request))
+
 def moderator(request):
 	file_list = FileData.objects.filter(approved = 'N')
 	return render_to_response('moderator.html', {'list':file_list}, context_instance = RequestContext(request))
