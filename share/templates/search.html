@@ -90,9 +90,10 @@
                         <select id="category" name = 'category' required>
                             <option>Assignment</option>
                             <option>Quiz</option>
-                            <option>Mid Sem Exam</option>
-                            <option>End Sem Exam</option>
+                            <option>Mid Sem</option>
+                            <option>End Sem</option>
                             <option>E-Book</option>
+                            <option>Other</option>
                             <option>All</option>
                         </select>                        
                     </div>
@@ -125,8 +126,8 @@
                         <td>NA</td>
                     {%endif%}
 
-                    {%if i.prof%}
-                        <td>{{i.prof}}</td>
+                    {%if i.professor%}
+                        <td>{{i.professor}}</td>
                     {%else%}
                         <td>NA</td>
                     {%endif%}                    
