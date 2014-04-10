@@ -97,19 +97,19 @@ def file_submit(request):
 		#	return render_to_response('upload.html', {'error': 'File should be under 5 MB'}, context_instance = RequestContext(request))		
 		name = '/'+f.name 
 		response = client.put_file(name, f)
-		url = dropbox.client.DropboxClient(token).share(name)
-		url = url['url']
-		#url = 'a'
+		#url = dropbox.client.DropboxClient(token).share(name)
+		#url = url['url']
+		url = 'a'
 		a = FileData(course_name = course_name, department_code = department_code, course_code = course_code, category = category, file_url = url)
 
 		if request.POST['year']!='':
 			a.year = int(request.POST['year'])
 
-		"""if request.POST['prof']!='':
-			a.year = request.POST['prof']"""
+		if request.POST['prof']!='':
+			a.year = request.POST['prof']
 
-		"""if request.POST['description']!='':
-			a.year = request.POST['description']"""
+		if request.POST['description']!='':
+			a.year = request.POST['description']
 
 		a.save()
 		return render_to_response('upload.html', {'success':'Thanks. File would be availabe after admin approval'}, context_instance = RequestContext(request))
