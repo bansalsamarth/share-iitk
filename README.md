@@ -3,9 +3,12 @@ This portal was developed for students of IIT Kanpur to share study material onl
 URL : http://share-iitk.herokuapp.com/
 
 Framework : Django
+
 Language : Python
+
 Database : PostgreSQL
-Deplloyment : Heroku
+
+Deployment : Heroku
 
 
 
