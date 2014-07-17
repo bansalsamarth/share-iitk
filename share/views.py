@@ -8,16 +8,10 @@ from django.contrib.auth.decorators import login_required
 import dropbox
 from share.models import FileData
 
-"""app_key = '4z2auu2o4v1ms76'
-app_secret = '8c29694u73eb515'
-flow = dropbox.client.DropboxOAuth2FlowNoRedirect(app_key, app_secret)
-authorize_url = flow.start()
-code = 'P870X6WAn0cAAAAAAAASdK9LmT_Vrd_md9OhhcPwhYI'
-access_token, user_id = flow.finish(code)"""
 
-token = 'P870X6WAn0cAAAAAAAASc3c-hsgqIOsdo5crALuuL5e6dyMffAyCznBJjvz9Cp1r'
+token = token
 
-client = dropbox.client.DropboxClient('P870X6WAn0cAAAAAAAASc3c-hsgqIOsdo5crALuuL5e6dyMffAyCznBJjvz9Cp1r')
+client = dropbox.client.DropboxClient(code)
 #print client.account_info()
 #response = client.put_file('/magnum-opus.txt', f)
 MAX_UPLOAD_SIZE = 5242880
